@@ -1,5 +1,6 @@
 import csv 
 import copy
+import os
 
 myVehicle = {
     "vin" : "<empty>",
@@ -17,7 +18,11 @@ for key, value in myVehicle.items():
     
 myInventoryList = []
 
-with open('car_fleet.csv') as csvFile:
+script_dir = os.path.dirname(__file__) 
+# Menggabungkan lokasi folder + nama file csv
+abs_file_path = os.path.join(script_dir, 'car_fleet.csv')
+
+with open(abs_file_path) as csvFile:
     csvReader = csv.reader(csvFile, delimiter=',')  
     lineCount = 0  
     for row in csvReader:
